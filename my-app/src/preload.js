@@ -2,7 +2,9 @@
 console.log('preload')
 
 window.mytest = 'test'
-console.log('preload')
+console.log('preload x')
+var test = 12;
+console.log(test)
 const { ipcRenderer } = require('electron')
 
 console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"

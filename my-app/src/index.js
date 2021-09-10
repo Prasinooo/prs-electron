@@ -16,10 +16,12 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-// require('electron-reload')(__dirname, {
-//   electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
-//   hardResetMethod: 'exit'
-// });
+require('electron-reload')(__dirname);
+console.log('__dirname ppp xxx', __dirname)
+
+var test = 2;
+console.log(test)
+
 
 const createWindow = () => {
   // Create the browser window.
