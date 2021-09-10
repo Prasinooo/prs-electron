@@ -16,7 +16,12 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-require('electron-reload')(__dirname);
+parentDir = path.dirname(__dirname)
+
+require('electron-reload')(__dirname, {
+  // Note that the path to electron may vary according to the main file
+  electron: require(`${parentDir}/node_modules/electron`)
+});
 console.log('__dirname ppp xxx', __dirname)
 
 var test = 2;
