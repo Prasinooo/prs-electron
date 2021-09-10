@@ -16,7 +16,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-parentDir = path.dirname(__dirname)
+const parentDir = path.dirname(__dirname)
 
 require('electron-reload')(__dirname, {
   // Note that the path to electron may vary according to the main file
