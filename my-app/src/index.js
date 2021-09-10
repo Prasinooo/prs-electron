@@ -1,4 +1,14 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
+ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log(arg) // prints "ping"
+  event.reply('asynchronous-reply', 'pong')
+})
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg) // prints "ping"
+  event.returnValue = 'pong'
+})
+
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -6,11 +16,20 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
+// require('electron-reload')(__dirname, {
+//   electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+//   hardResetMethod: 'exit'
+// });
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js')
+    }  
   });
 
   // and load the index.html of the app.
