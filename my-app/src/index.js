@@ -22,7 +22,7 @@ require('electron-reload')(__dirname, {
   // Note that the path to electron may vary according to the main file
   electron: require(`${parentDir}/node_modules/electron`)
 });
-console.log('__dirname ppp xxx', __dirname)
+console.log('__dirname', __dirname)
 
 var test = 2;
 console.log(test)
